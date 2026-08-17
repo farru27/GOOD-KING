@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GOD BING AI</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                GB
+            </div>
+
+            <div>
+                <b>GOD BING</b>
+                <small>AI</small>
+            </div>
+
+        </div>
+
+
+        <button
+            class="new-chat"
+            id="newChat"
+        >
+            ＋ Nueva conversación
+        </button>
+
+
+        <div class="menu">
+
+            <button id="openSettings">
+                ⚙️ Configuración
+            </button>
+
+            <button id="openModels">
+                🧠 Modelos
+            </button>
+
+        </div>
+
+
+        <div class="connection">
+
+            <span id="connectionDot"></span>
+
+            <span id="connectionText">
+                Sin configurar
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header>
+
+            <div class="mobile-logo">
+                GOD BING
+            </div>
+
+            <button id="mobileSettings">
+                ⚙️
+            </button>
+
+        </header>
+
+
+        <section
+            id="chat"
+            class="chat"
+        >
+
+            <div
+                id="welcome"
+                class="welcome"
+            >
+
+                <div class="hero">
+                    GB
+                </div>
+
+                <h1>
+                    ¿Qué quieres saber?
+                </h1>
+
+                <p>
+                    GOD BING consulta tres modelos
+                    y utiliza un cuarto modelo como juez.
+                </p>
+
+                <div class="suggestions">
+
+                    <button
+                        data-question="Explícame qué es la inteligencia artificial."
+                    >
+                        🧠 Explicar algo
+                    </button>
+
+                    <button
+                        data-question="Ayúdame a programar una aplicación web."
+                    >
+                        💻 Programar
+                    </button>
+
+                    <button
+                        data-question="Ayúdame a estudiar para un examen."
+                    >
+                        📚 Estudiar
+                    </button>
+
+                    <button
+                        data-question="Compara dos opciones y dime cuál conviene más."
+                    >
+                        ⚖️ Comparar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="composer-area">
+
+            <form id="form">
+
+                <textarea
+                    id="input"
+                    placeholder="Pregúntale algo a GOD BING..."
+                    rows="1"
+                ></textarea>
+
+                <button
+                    id="send"
+                    type="submit"
+                >
+                    ➤
+                </button>
+
+            </form>
+
+            <small>
+                GOD BING puede cometer errores. Verifica información importante.
+            </small>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- PANEL CONFIGURACIÓN -->
+
+<div
+    id="settings"
+    class="overlay"
+>
+
+    <div class="settings">
+
+        <div class="settings-header">
+
+            <div>
+
+                <h2>
+                    ⚙️ Configuración
+                </h2>
+
+                <p>
+                    Configura tu conexión con OpenRouter.
+                </p>
+
+            </div>
+
+            <button id="closeSettings">
+                ×
+            </button>
+
+        </div>
+
+
+        <label>
+            OpenRouter API Key
+        </label>
+
+        <div class="key-input">
+
+            <input
+                id="apiKey"
+                type="password"
+                placeholder="sk-or-v1-..."
+                autocomplete="off"
+            >
+
+            <button id="showKey">
+                👁
+            </button>
+
+        </div>
+
+
+        <p class="security">
+            🔒 La clave se utiliza en el servidor y no se guarda
+            en el navegador.
+        </p>
+
+
+        <h3>
+            🧠 Modelos
+        </h3>
+
+
+        <label>
+            Modelo 1
+        </label>
+
+        <input
+            id="model1"
+            value="openai/gpt-5.3-chat"
+        >
+
+
+        <label>
+            Modelo 2
+        </label>
+
+        <input
+            id="model2"
+            value="anthropic/claude-sonnet-4.5"
+        >
+
+
+        <label>
+            Modelo 3
+        </label>
+
+        <input
+            id="model3"
+            value="google/gemini-2.5-flash"
+        >
+
+
+        <label>
+            ⚖️ Modelo Juez
+        </label>
+
+        <input
+            id="judge"
+            value="openai/gpt-5.3-chat"
+        >
+
+
+        <div class="settings-buttons">
+
+            <button
+                id="test"
+                class="secondary"
+            >
+                🧪 Probar conexión
+            </button>
+
+            <button
+                id="save"
+                class="primary"
+            >
+                💾 Guardar
+            </button>
+
+        </div>
+
+
+        <div
+            id="settingsMessage"
+            class="settings-message"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- PANEL MODELOS -->
+
+<div
+    id="modelsPanel"
+    class="overlay"
+>
+
+    <div class="models">
+
+        <div class="settings-header">
+
+            <h2>
+                🧠 Modelos utilizados
+            </h2>
+
+            <button id="closeModels">
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="modelAnswers">
+
+            <p>
+                Las respuestas aparecerán aquí.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+          </html>
